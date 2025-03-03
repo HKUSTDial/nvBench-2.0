@@ -1,4 +1,4 @@
-# nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity
+* nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity
 
 This repository contains the source code and data for the nvBench 2.0 benchmark, designed to evaluate Natural Language to Visualization (nl2vis) systems in scenarios involving ambiguous queries.
 
@@ -8,7 +8,7 @@ Natural Language to Visualization (nl2vis) enables users to create visualization
 
 ## Example of Reasoning through Ambiguity
 
-![Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query](https://claude.ai/chat/figures/fig1.png)
+![Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query](/static/images/fig1.svg)
 
 As shown in Figure 1, a seemingly straightforward query like "Show the gross trend of comedy and action movies by year" contains multiple ambiguities:
 
@@ -27,7 +27,7 @@ To address this ambiguous nl2vis task, we resolve ambiguity via a human-like rea
 
 ## Ambiguity-Injected NL2VIS Data Synthesizer
 
-![Figure 2: An overview of ambiguity-injected nl2vis data synthesizer](https://claude.ai/chat/figures/fig2.png)
+![Figure 2: An overview of ambiguity-injected nl2vis data synthesizer](/static/images/fig2.svg)
 
 We developed an ambiguity-injected nl2vis data synthesizer that systematically introduces controlled ambiguity into visualization specifications. As shown in Figure 2, our pipeline:
 
@@ -38,7 +38,7 @@ We developed an ambiguity-injected nl2vis data synthesizer that systematically i
 
 ## Controlled Ambiguity Injection Process
 
-![Figure 3: Injecting ambiguities into a seed visualization](https://claude.ai/chat/figures/fig3.png)
+![Figure 3: Injecting ambiguities into a seed visualization](/static/images/fig3.svg)
 
 Figure 3 demonstrates how we inject ambiguities into a seed visualization:
 
@@ -52,7 +52,8 @@ Figure 3 demonstrates how we inject ambiguities into a seed visualization:
 
 **Table 1: Comparison of nl2vis benchmarks**
 
-[Table 1 will be placed here]
+![Table 1: Comparison of nl2vis benchmarks](/static/images/table1.png)
+
 
 nvBench 2.0 distinguishes itself from existing benchmarks by:
 
@@ -63,19 +64,20 @@ nvBench 2.0 distinguishes itself from existing benchmarks by:
 
 ## Dataset Statistics
 
+
 **Table 3: Distribution of natural language styles across chart types and word count statistics**
 
-[Table 3 will be placed here]
+![Table 3: Distribution of natural language styles](/static/images/table3.png)
 
 The dataset includes diverse query styles (commands, questions, and captions) across various chart types. The average query length is approximately 14 words, with a good balance across all visualization types.
 
 **Table 4: Ambiguity count at each reasoning step**
 
-[Table 4 will be placed here]
+![Table 4: Ambiguity count statistics](/static/images/table4.png)
 
 **Table 5: Statistics of ambiguity patterns**
 
-[Table 5 will be placed here]
+![Table 5: Statistics of ambiguity patterns](/static/images/table5.png)
 
 Our dataset contains diverse ambiguity patterns, with Channel Encoding (CE) being the most common type of ambiguity (88.06%), followed by Data Transformation (DT) ambiguities (46.00%). Many samples contain multiple types of ambiguity, highlighting the complexity of real-world visualization requests.
 
@@ -104,19 +106,21 @@ We conducted comprehensive experiments to validate the effectiveness of nvBench 
 
 **Table 6: Overall performance comparison between different models on nvBench 2.0**
 
-[Table 6 will be placed here]
+![Table 6: Overall performance comparison](/static/images/table6.png)
+
 
 Our proposed Step-nl2vis achieves state-of-the-art performance across most metrics, significantly outperforming both prompting-based and fine-tuning-based baselines. Step-nl2vis obtains the highest F1@3 (81.50%) and F1@5 (80.88%), demonstrating its superior ability to handle ambiguity in nl2vis tasks.
 
 **Figure 7: F1 across different models and ambiguity levels**
 
-[Figure 7 will be placed here]
+![Figure 7: F1 performance heatmap](/static/images/fig7.svg)
 
 The heatmap shows that Step-nl2vis consistently outperforms other models across most chart types and ambiguity levels. Models incorporating step-wise reasoning generally show better performance than their direct prompting counterparts, confirming the effectiveness of decomposing complex visualization reasoning into explicit steps.
 
 **Figure 8: Recall across different models and ambiguity levels**
 
-[Figure 8 will be placed here]
+![Figure 8: Recall performance chart](/static/images/fig8.svg)
+
 
 Step-nl2vis demonstrates superior recall performance across all ambiguity levels examined. At ambiguity level 3, it achieves 83.3% recall, representing a significant improvement over comparative approaches. The performance advantage of Step-nl2vis over alternative approaches expands with increasing ambiguity levels.
 
@@ -128,8 +132,8 @@ If you find nvBench 2.0 useful for your work, please cite:
 @article{luo2024nvbench2,
   author    = {Luo, Tianqi and Huang, Chuhan and Shen, Leixian and Li, Boyan and Shen, Shuyu and Zeng, Wei and Tang, Nan and Luo, Yuyu},
   title     = {nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity},
-  journal   = {PVLDB},
-  year      = {2024},
+  <!-- journal   = {PVLDB}, -->
+  <!-- year      = {2024}, -->
 }
 ```
 
