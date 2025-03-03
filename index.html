@@ -2,43 +2,92 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="description" content="nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity">
+  <meta name="keywords" content="nvBench, NL2VIS, Natural Language, Visualization, Ambiguity">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/daillab.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  
+  <style>
+    .nl2vis {
+      font-weight: bold;
+      color: #2980B9;
+    }
+    .teaser img {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero.is-light {
+      background-color: #f4f8fd;
+    }
+    .hero.teaser {
+      background-color: #ffffff;
+    }
+    .paper-figure {
+      margin-bottom: 2rem;
+    }
+    .figure-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 2rem;
+    }
+    .figure-vertical {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .figure-vertical img {
+      max-width: 48%;
+    }
+    .figure-vertical .figure-text {
+      max-width: 48%;
+    }
+    .figure-caption {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+    table {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    .tables-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .table-container {
+      width: 48%;
+    }
+    .math-formula {
+      background-color: #f5f5f5;
+      padding: 1rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+  </style>
 </head>
 <body>
 
@@ -52,10 +101,11 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
+      <a class="navbar-item" href="https://github.com/HKUSTDial?q=nvbench&type=all&language=&sort=">
       <span class="icon">
           <i class="fas fa-home"></i>
       </span>
+      <span>DIAL Lab</span>
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -63,22 +113,15 @@
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
+          <a class="navbar-item" href="https://nvbench2.github.io">
+            nvBench 2.0
           </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
+          <a class="navbar-item" href="https://github.com/TsinghuaDatabaseGroup/nvBench">
+            nvBench 1.0
           </a>
         </div>
       </div>
     </div>
-
   </div>
 </nav>
 
@@ -88,39 +131,42 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-1 publication-title">nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="#">Tianqi Luo</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="#">Chuhan Huang</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+              <a href="#">Leixian Shen</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
+              <a href="#">Boyan Li</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
+              <a href="#">Shuyu Shen</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
+              <a href="#">Wei Zeng</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+              <a href="#">Nan Tang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Yuyu Luo</a><sup>1</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>HKUST(GZ),</span>
+            <span class="author-block"><sup>2</sup>HKUST</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href="#"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -129,7 +175,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="#"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -137,118 +183,23 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/nvBench2/nvBench2.github.io"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code & Data</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -258,230 +209,186 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            Natural Language to Visualization (nl2vis) enables users to create visualizations from natural language queries, making data insights more accessible. However, nl2vis faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
+            To address this challenge, we introduce nvBench 2.0, a new benchmark designed to evaluate nl2vis systems in scenarios involving ambiguous queries. nvBench 2.0 includes 7,878 natural language queries and 24,076 corresponding visualizations, derived from 780 tables across 153 domains. It is built using a controlled ambiguity-injection pipeline that generates ambiguous queries through a reverse-generation workflow. By starting with unambiguous seed visualizations and selectively injecting ambiguities, the pipeline yields multiple valid interpretations for each query, with each ambiguous query traceable to its corresponding visualization through step-wise reasoning paths.
           </p>
           <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            We evaluate various Large Language Models (LLMs) on their ability to perform ambiguous nl2vis tasks using nvBench 2.0. We also propose Step-nl2vis, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization. Our results show that Step-nl2vis outperforms all baselines, setting a new state-of-the-art for ambiguous nl2vis tasks.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
-
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
+    <!-- Step-wise Disambiguation (Figure 1) -->
+    <div class="figure-vertical">
+      <img src="./static/images/fig1.png" alt="Example of reasoning appropriate visualizations from an ambiguous natural language query">
+      <div class="figure-text">
+        <h2 class="title is-3">Step-wise Disambiguation</h2>
         <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
           <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
+            When resolving ambiguities in natural language queries, we employ a step-wise reasoning approach that mimics human decision-making processes. This approach involves:
           </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
+          <ol>
+            <li><strong>Data Selection Reasoning:</strong> Identifying relevant data columns and filters from the query</li>
+            <li><strong>Chart Type Reasoning:</strong> Determining appropriate visualization types based on analytical tasks</li>
+            <li><strong>Channel Mapping Reasoning:</strong> Assigning data elements to visual channels</li>
+            <li><strong>Data Transformation Reasoning:</strong> Specifying operations like aggregation or filtering</li>
+            <li><strong>Visualization Synthesis:</strong> Generating complete visualizations that represent valid interpretations</li>
+          </ol>
+          <p>
+            This structured approach enables systematic resolution of ambiguities while preserving multiple valid interpretations of the original query.
+          </p>
         </div>
       </div>
-      <!--/ Visual Effects. -->
+    </div>
 
-      <!-- Matting. -->
+    <!-- Ambiguity-Injected Data Synthesizer Overview (Figure 2) -->
+    <div class="columns is-centered">
       <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
+        <h2 class="title is-3">Ambiguity-Injected NL2VIS Data Synthesizer</h2>
+        <div class="content">
+          <p>
+            We developed a data synthesizer that systematically introduces ambiguity into seed visualizations. This approach ensures control over the types of ambiguity while maintaining meaningful, interpretable outputs.
+          </p>
+        </div>
+        <div class="paper-figure">
+          <img src="./static/images/pipeline.png" alt="An overview of ambiguity-injected nl2vis data synthesizer">
+          <p class="figure-caption">Figure 2: An overview of ambiguity-injected nl2vis data synthesizer.</p>
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
 
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
+    <!-- Ambiguity Injection Process (Figure 3) -->
+    <div class="figure-vertical">
+      <img src="./static/images/fig3.png" alt="Injecting ambiguities into a seed visualization">
+      <div class="figure-text">
+        <h2 class="title is-3">Ambiguity Injection Process</h2>
+        <div class="content">
           <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
+            Our ambiguity-injection process transforms seed visualizations into ambiguity-aware visualization trees. By selectively introducing ambiguity nodes, we create multiple valid interpretations of the same query.
           </p>
           <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+            As shown in the figure, we start with a seed chart and convert it to a visualization tree. Then, we inject ambiguities to create multiple possible interpretations. This ambiguity-aware tree can then be resolved in various ways, producing different valid visualizations for the same ambiguous query.
           </p>
           <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+            The process ensures traceability from query to visualization through explicit reasoning paths, enabling systematic evaluation of nl2vis systems' ability to handle ambiguity.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
 
+    <!-- NL2VIS Benchmarks Comparison (Table 1) -->
+    <h2 class="title is-3">Benchmark Comparison</h2>
+    <div class="content">
+      <p>
+        nvBench 2.0 introduces several key innovations compared to existing nl2vis benchmarks, particularly its explicit handling of query ambiguity and support for one-to-many mapping between queries and visualizations.
+      </p>
+    </div>
+    <div class="figure-container">
+      <img src="./static/images/table1.png" alt="Comparison of nl2vis benchmarks">
+      <p class="figure-caption">Table 1: Comparison of nl2vis benchmarks.</p>
+    </div>
+
+    <!-- NL Query Styles (Table 3) -->
+    <h2 class="title is-3">Natural Language Query Distribution</h2>
+    <div class="content">
+      <p>
+        nvBench 2.0 includes a diverse range of natural language query styles and chart types, ensuring comprehensive coverage for evaluating nl2vis systems.
+      </p>
+    </div>
+    <div class="figure-container">
+      <img src="./static/images/table3.png" alt="Distribution of natural language styles across chart types and word count statistics">
+      <p class="figure-caption">Table 3: Distribution of natural language styles across chart types and word count statistics.</p>
+    </div>
+
+    <!-- Ambiguity Statistics (Tables 4 & 5) -->
+    <h2 class="title is-3">Ambiguity Statistics</h2>
+    <div class="content">
+      <p>
+        nvBench 2.0 includes detailed statistics on ambiguity types and patterns, providing insights into the distribution and frequency of different ambiguity categories.
+      </p>
+    </div>
+    
+    <div class="tables-container">
+      <div class="table-container">
+        <img src="./static/images/table4.png" alt="Ambiguity count at each reasoning step">
+        <p class="figure-caption">Table 4: Ambiguity count at each reasoning step.</p>
+      </div>
+      
+      <div class="table-container">
+        <img src="./static/images/table5.png" alt="Statistics of ambiguity patterns">
+        <p class="figure-caption">Table 5: Statistics of ambiguity patterns.</p>
+      </div>
+    </div>
+
+    <!-- Step-NL2VIS Model -->
+    <h2 class="title is-3">STEP-NL2VIS for Ambiguous NL2VIS</h2>
+    <div class="content">
+      <p>
+        We propose Step-nl2vis, an LLM-based model trained on nvBench 2.0, which addresses ambiguity by incorporating a step-wise reasoning process and leveraging preference optimization.
+      </p>
+      
+      <h3 class="title is-4">Preference Optimization with Step-DPO</h3>
+      <p>
+        Step-DPO utilizes step-wise paired correct and incorrect samples for preference optimization, delivering rich process supervision signals to the model and fostering improved accuracy at each step.
+      </p>
+      
+      <div class="math-formula">
+        <p>L(θ) = -E<sub>(x,s<sub>1~k-1</sub>,s<sub>win</sub>,s<sub>lose</sub>)~D<sub>p</sub></sub>[
+          log σ(
+            β log π<sub>θ</sub>(s<sub>win</sub>|x, s<sub>1~k-1</sub>) / π<sub>ref</sub>(s<sub>win</sub>|x, s<sub>1~k-1</sub>)
+            - β log π<sub>θ</sub>(s<sub>lose</sub>|x, s<sub>1~k-1</sub>) / π<sub>ref</sub>(s<sub>lose</sub>|x, s<sub>1~k-1</sub>)
+          )
+        ]</p>
+      </div>
+      
+      <p>
+        Where D<sub>p</sub> represents a step-wise preference dataset, π<sub>θ</sub>(·|x, s<sub>1~k-1</sub>) denotes the policy model to be optimized, π<sub>ref</sub>(·|x, s<sub>1~k-1</sub>) refers to the reference model, and β controls the divergence between the optimized policy and the reference model.
+      </p>
+    </div>
+
+    <!-- Experimental Results -->
+    <h2 class="title is-3">Experiments</h2>
+    <div class="content">
+      <p>
+        We evaluate the performance of various models on the ambiguous nl2vis task using nvBench 2.0, comparing our Step-nl2vis model against state-of-the-art approaches.
+      </p>
+      
+      <h3 class="title is-4">Overall Performance</h3>
+      <p>
+        The table below presents the comprehensive performance evaluation of different models on nvBench 2.0. Our proposed Step-nl2vis achieves state-of-the-art performance across most metrics.
+      </p>
+    </div>
+    
+    <div class="figure-container">
+      <img src="./static/images/table6.png" alt="Overall performance comparison between different models on nvBench 2.0">
+      <p class="figure-caption">Table 6: Overall performance comparison between different models on nvBench 2.0.</p>
+    </div>
+    
+    <div class="figure-container">
+      <img src="./static/images/fig7.png" alt="F1 across different models and ambiguity levels">
+      <p class="figure-caption">Figure 7: F1 across different models and ambiguity levels.</p>
+    </div>
+    
+    <div class="figure-container">
+      <img src="./static/images/fig8.png" alt="Recall across different models and ambiguity levels">
+      <p class="figure-caption">Figure 8: Recall across different models and ambiguity levels.</p>
+    </div>
   </div>
 </section>
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
-  </div>
-</section>
-
 
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
-        </div>
-      </div>
+      <p>
+        Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+      </p>
     </div>
   </div>
 </footer>
