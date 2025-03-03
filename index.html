@@ -87,6 +87,15 @@
       margin: 1rem 0;
       overflow-x: auto;
     }
+    .citation {
+      background-color: #f5f5f5;
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
   </style>
 </head>
 <body>
@@ -166,7 +175,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://raw.githubusercontent.com/nvBench2/nvBench2.github.io/refs/heads/main/nvBench2.0.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -379,6 +388,28 @@
     <div class="figure-container">
       <img src="./static/images/fig8.svg" alt="Recall across different models and ambiguity levels">
       <p class="figure-caption">Figure 8: Recall across different models and ambiguity levels.</p>
+    </div>
+
+    <!-- Citation Section -->
+    <h2 class="title is-3">Citation</h2>
+    <div class="content">
+      <p>
+        If you find nvBench 2.0 useful for your work, please cite:
+      </p>
+      <div class="citation">@article{luo2024nvbench2,
+  author    = {Luo, Tianqi and Huang, Chuhan and Shen, Leixian and Li, Boyan and Shen, Shuyu and Zeng, Wei and Tang, Nan and Luo, Yuyu},
+  title     = {nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity},
+  <!-- journal   = {PVLDB}, -->
+  <!-- year      = {2024}, -->
+}</div>
+    </div>
+
+    <!-- License Section -->
+    <h2 class="title is-3">License</h2>
+    <div class="content">
+      <p>
+        This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
     </div>
   </div>
 </section>
