@@ -73,17 +73,23 @@ nvBench 2.0 distinguishes itself from existing benchmarks by:
 
 **Table 3: Distribution of natural language styles across chart types and word count statistics**
 
-![Table 3: Distribution of natural language styles](/static/images/table3.png)
+<p align="center">
+  <img src="/static/images/table3.png" alt="Table 3: Distribution of natural language styles" width="60%">
+</p>
 
 The dataset includes diverse query styles (commands, questions, and captions) across various chart types. The average query length is approximately 14 words, with a good balance across all visualization types.
 
 **Table 4: Ambiguity count at each reasoning step**
 
-![Table 4: Ambiguity count statistics](/static/images/table4.png)
+<p align="center">
+  <img src="/static/images/table4.png" alt="Table 4: Ambiguity count statistics" width="60%">
+</p>
 
 **Table 5: Statistics of ambiguity patterns**
 
-![Table 5: Statistics of ambiguity patterns](/static/images/table5.png)
+<p align="center">
+  <img src="/static/images/table5.png" alt="Table 5: Statistics of ambiguity patterns" width="60%">
+</p>
 
 Our dataset contains diverse ambiguity patterns, with Channel Encoding (CE) being the most common type of ambiguity (88.06%), followed by Data Transformation (DT) ambiguities (46.00%). Many samples contain multiple types of ambiguity, highlighting the complexity of real-world visualization requests.
 
