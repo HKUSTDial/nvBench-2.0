@@ -23,7 +23,7 @@
   <script src="./static/js/index.js"></script>
   
   <style>
-    .nl2vis {
+    .NL2VIS {
       font-weight: bold;
       color: #2980B9;
     }
@@ -165,8 +165,8 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>HKUST(GZ),</span>
-            <span class="author-block"><sup>2</sup>HKUST</span>
+            <span class="author-block"><sup>1</sup>The Hong Kong University of Science and Technology (Guangzhou),</span>
+            <span class="author-block"><sup>2</sup>The Hong Kong University of Science and Technology</span>
           </div>
 
           <div class="column has-text-centered">
@@ -216,13 +216,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Natural Language to Visualization (nl2vis) enables users to create visualizations from natural language queries, making data insights more accessible. However, nl2vis faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
+            Natural Language to Visualization (NL2VIS) enables users to create visualizations from natural language queries, making data insights more accessible. However, NL2VIS faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
           </p>
           <p>
-            To address this challenge, we introduce nvBench 2.0, a new benchmark designed to evaluate nl2vis systems in scenarios involving ambiguous queries. nvBench 2.0 includes 7,878 natural language queries and 24,076 corresponding visualizations, derived from 780 tables across 153 domains. It is built using a controlled ambiguity-injection pipeline that generates ambiguous queries through a reverse-generation workflow. By starting with unambiguous seed visualizations and selectively injecting ambiguities, the pipeline yields multiple valid interpretations for each query, with each ambiguous query traceable to its corresponding visualization through step-wise reasoning paths.
+            To address this challenge, we introduce nvBench 2.0, a new benchmark designed to evaluate NL2VIS systems in scenarios involving ambiguous queries. nvBench 2.0 includes 7,878 natural language queries and 24,076 corresponding visualizations, derived from 780 tables across 153 domains. It is built using a controlled ambiguity-injection pipeline that generates ambiguous queries through a reverse-generation workflow. By starting with unambiguous seed visualizations and selectively injecting ambiguities, the pipeline yields multiple valid interpretations for each query, with each ambiguous query traceable to its corresponding visualization through step-wise reasoning paths.
           </p>
           <p>
-            We evaluate various Large Language Models (LLMs) on their ability to perform ambiguous nl2vis tasks using nvBench 2.0. We also propose Step-nl2vis, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization. Our results show that Step-nl2vis outperforms all baselines, setting a new state-of-the-art for ambiguous nl2vis tasks.
+            We evaluate various Large Language Models (LLMs) on their ability to perform ambiguous NL2VIS tasks using nvBench 2.0. We also propose Step-NL2VIS, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization. Our results show that Step-NL2VIS outperforms all baselines, setting a new state-of-the-art for ambiguous NL2VIS tasks.
           </p>
         </div>
       </div>
@@ -265,8 +265,8 @@
           </p>
         </div>
         <div class="paper-figure">
-          <img src="./static/images/fig2.svg" alt="An overview of ambiguity-injected nl2vis data synthesizer">
-          <p class="figure-caption">Figure 2: An overview of ambiguity-injected nl2vis data synthesizer.</p>
+          <img src="./static/images/fig2.svg" alt="An overview of ambiguity-injected NL2VIS data synthesizer">
+          <p class="figure-caption">Figure 2: An overview of ambiguity-injected NL2VIS data synthesizer.</p>
         </div>
       </div>
     </div>
@@ -284,7 +284,7 @@
             As shown in the figure, we start with a seed chart and convert it to a visualization tree. Then, we inject ambiguities to create multiple possible interpretations. This ambiguity-aware tree can then be resolved in various ways, producing different valid visualizations for the same ambiguous query.
           </p>
           <p>
-            The process ensures traceability from query to visualization through explicit reasoning paths, enabling systematic evaluation of nl2vis systems' ability to handle ambiguity.
+            The process ensures traceability from query to visualization through explicit reasoning paths, enabling systematic evaluation of NL2VIS systems' ability to handle ambiguity.
           </p>
         </div>
       </div>
@@ -294,28 +294,25 @@
     <h2 class="title is-3">Benchmark Comparison</h2>
     <div class="content">
       <p>
-        nvBench 2.0 introduces several key innovations compared to existing nl2vis benchmarks, particularly its explicit handling of query ambiguity and support for one-to-many mapping between queries and visualizations.
+        nvBench 2.0 introduces several key innovations compared to existing NL2VIS benchmarks, particularly its explicit handling of query ambiguity and support for one-to-many mapping between queries and visualizations.
       </p>
     </div>
     <div class="figure-container">
-      <img src="./static/images/table1.png" alt="Comparison of nl2vis benchmarks">
-      <p class="figure-caption">Table 1: Comparison of nl2vis benchmarks.</p>
+      <img src="./static/images/table1.png" alt="Comparison of NL2VIS benchmarks">
+      <p class="figure-caption">Table 1: Comparison of NL2VIS benchmarks.</p>
     </div>
-
-    <!-- NL Query Styles (Table 3) -->
-    <h2 class="title is-3">Natural Language Query Distribution</h2>
+    <!-- Benchmark Statistics -->
+    <h2 class="title is-3">Benchmark Statistics</h2>
     <div class="content">
       <p>
-        nvBench 2.0 includes a diverse range of natural language query styles and chart types, ensuring comprehensive coverage for evaluating nl2vis systems.
+        nvBench 2.0 includes a diverse range of natural language query styles and chart types, ensuring comprehensive coverage for evaluating NL2VIS systems.
       </p>
     </div>
     <div class="figure-container">
-      <img src="./static/images/table3.png" alt="Distribution of natural language styles across chart types and word count statistics" style="width: 80%;">
+      <img src="./static/images/table3.png" alt="Distribution of natural language styles across chart types and word count statistics" style="width: 60%;">
       <p class="figure-caption">Table 3: Distribution of natural language styles across chart types and word count statistics.</p>
     </div>
 
-    <!-- Ambiguity Statistics (Tables 4 & 5) -->
-    <h2 class="title is-3">Ambiguity Statistics</h2>
     <div class="content">
       <p>
         nvBench 2.0 includes detailed statistics on ambiguity types and patterns, providing insights into the distribution and frequency of different ambiguity categories.
@@ -335,10 +332,10 @@
     </div>
 
     <!-- Step-NL2VIS Model -->
-    <h2 class="title is-3">STEP-NL2VIS for Ambiguous NL2VIS</h2>
+    <h2 class="title is-3">Step-NL2VIS for Ambiguous NL2VIS</h2>
     <div class="content">
       <p>
-        We propose Step-nl2vis, an LLM-based model trained on nvBench 2.0, which addresses ambiguity by incorporating a step-wise reasoning process and leveraging preference optimization.
+        We propose Step-NL2VIS, an LLM-based model trained on nvBench 2.0, which addresses ambiguity by incorporating a step-wise reasoning process and leveraging preference optimization.
       </p>
       
       <h3 class="title is-4">Preference Optimization with Step-DPO</h3>
@@ -364,12 +361,12 @@
     <h2 class="title is-3">Experiments</h2>
     <div class="content">
       <p>
-        We evaluate the performance of various models on the ambiguous nl2vis task using nvBench 2.0, comparing our Step-nl2vis model against state-of-the-art approaches.
+        We evaluate the performance of various models on the ambiguous NL2VIS task using nvBench 2.0, comparing our Step-NL2VIS model against state-of-the-art approaches.
       </p>
       
       <h3 class="title is-4">Overall Performance</h3>
       <p>
-        The table below presents the comprehensive performance evaluation of different models on nvBench 2.0. Our proposed Step-nl2vis achieves state-of-the-art performance across most metrics.
+        The table below presents the comprehensive performance evaluation of different models on nvBench 2.0. Our proposed Step-NL2VIS achieves state-of-the-art performance across most metrics.
       </p>
     </div>
     

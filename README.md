@@ -1,10 +1,14 @@
-* nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity
+# nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity
 
-This repository contains the source code and data for the nvBench 2.0 benchmark, designed to evaluate Natural Language to Visualization (nl2vis) systems in scenarios involving ambiguous queries.
+This repository contains the source code and data for the nvBench 2.0 benchmark, designed to evaluate Natural Language to Visualization (NL2VIS) systems in scenarios involving ambiguous queries.
 
 ## Introduction
 
-Natural Language to Visualization (nl2vis) enables users to create visualizations from natural language queries, making data insights more accessible. However, nl2vis faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
+Natural Language to Visualization (NL2VIS) enables users to create visualizations from natural language queries, making data insights more accessible. However, NL2VIS faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
+
+## Data Usage
+
+see `./data/` dir
 
 ## Example of Reasoning through Ambiguity
 
@@ -17,7 +21,7 @@ As shown in Figure 1, a seemingly straightforward query like "Show the gross tre
 * At the visualization layer, "trend" may suggest a bar chart or line chart
 * "By year" implies temporal binning that isn't explicitly defined
 
-To address this ambiguous nl2vis task, we resolve ambiguity via a human-like reasoning workflow that breaks the process into five steps:
+To address this ambiguous NL2VIS task, we resolve ambiguity via a human-like reasoning workflow that breaks the process into five steps:
 
 1. **Data Selection Reasoning** - Identifying candidate columns for "gross"
 2. **Chart Type Reasoning** - Evaluating appropriate chart types for trend analysis
@@ -27,9 +31,9 @@ To address this ambiguous nl2vis task, we resolve ambiguity via a human-like rea
 
 ## Ambiguity-Injected NL2VIS Data Synthesizer
 
-![Figure 2: An overview of ambiguity-injected nl2vis data synthesizer](/static/images/fig2.svg)
+![Figure 2: An overview of ambiguity-injected NL2VIS data synthesizer](/static/images/fig2.svg)
 
-We developed an ambiguity-injected nl2vis data synthesizer that systematically introduces controlled ambiguity into visualization specifications. As shown in Figure 2, our pipeline:
+We developed an ambiguity-injected NL2VIS data synthesizer that systematically introduces controlled ambiguity into visualization specifications. As shown in Figure 2, our pipeline:
 
 (a)  **Ambiguity-aware VIS Tree Synthesis** : Begins with seed visualizations and injects ambiguity nodes to create ambiguity-aware visualization trees
 (b)  **VIS Synthesis** : Uses an ASP solver to resolve these trees into multiple valid visualizations
@@ -50,10 +54,9 @@ Figure 3 demonstrates how we inject ambiguities into a seed visualization:
 
 ## Benchmark Comparison
 
-**Table 1: Comparison of nl2vis benchmarks**
+**Table 1: Comparison of NL2VIS benchmarks**
 
-![Table 1: Comparison of nl2vis benchmarks](/static/images/table1.png)
-
+![Table 1: Comparison of NL2VIS benchmarks](/static/images/table1.png)
 
 nvBench 2.0 distinguishes itself from existing benchmarks by:
 
@@ -63,7 +66,6 @@ nvBench 2.0 distinguishes itself from existing benchmarks by:
 * Using LLM-based query generation for natural, diverse queries
 
 ## Dataset Statistics
-
 
 **Table 3: Distribution of natural language styles across chart types and word count statistics**
 
@@ -83,11 +85,11 @@ Our dataset contains diverse ambiguity patterns, with Channel Encoding (CE) bein
 
 ## Step-NL2VIS for Ambiguous NL2VIS Tasks
 
-We propose Step-nl2vis, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization.
+We propose Step-NL2VIS, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization.
 
 ### Preference Optimization with Step-DPO
 
-Step-nl2vis incorporates step-wise direct preference optimization (Step-DPO), which aims to maximize the probability of correct reasoning steps and minimize incorrect ones. The objective function is formulated as:
+Step-NL2VIS incorporates step-wise direct preference optimization (Step-DPO), which aims to maximize the probability of correct reasoning steps and minimize incorrect ones. The objective function is formulated as:
 
 ```
 L(θ) = -E(x,s₁~ₖ₋₁,sₘᵢₙ,sₗₒₛₑ)~Dₚ[log σ(β log(πθ(sₘᵢₙ|x,s₁~ₖ₋₁)/πᵣₑf(sₘᵢₙ|x,s₁~ₖ₋₁)) - β log(πθ(sₗₒₛₑ|x,s₁~ₖ₋₁)/πᵣₑf(sₗₒₛₑ|x,s₁~ₖ₋₁)))]
@@ -102,27 +104,29 @@ where:
 
 ## Experimental Evaluation
 
-We conducted comprehensive experiments to validate the effectiveness of nvBench 2.0 for training and evaluating nl2vis systems under ambiguity.
+We conducted comprehensive experiments to validate the effectiveness of nvBench 2.0 for training and evaluating NL2VIS systems under ambiguity.
 
 **Table 6: Overall performance comparison between different models on nvBench 2.0**
 
 ![Table 6: Overall performance comparison](/static/images/table6.png)
 
-
-Our proposed Step-nl2vis achieves state-of-the-art performance across most metrics, significantly outperforming both prompting-based and fine-tuning-based baselines. Step-nl2vis obtains the highest F1@3 (81.50%) and F1@5 (80.88%), demonstrating its superior ability to handle ambiguity in nl2vis tasks.
+Our proposed Step-NL2VIS achieves state-of-the-art performance across most metrics, significantly outperforming both prompting-based and fine-tuning-based baselines. Step-NL2VIS obtains the highest F1@3 (81.50%) and F1@5 (80.88%), demonstrating its superior ability to handle ambiguity in NL2VIS tasks.
 
 **Figure 7: F1 across different models and ambiguity levels**
 
 ![Figure 7: F1 performance heatmap](/static/images/fig7.svg)
 
-The heatmap shows that Step-nl2vis consistently outperforms other models across most chart types and ambiguity levels. Models incorporating step-wise reasoning generally show better performance than their direct prompting counterparts, confirming the effectiveness of decomposing complex visualization reasoning into explicit steps.
+The heatmap shows that Step-NL2VIS consistently outperforms other models across most chart types and ambiguity levels. Models incorporating step-wise reasoning generally show better performance than their direct prompting counterparts, confirming the effectiveness of decomposing complex visualization reasoning into explicit steps.
 
 **Figure 8: Recall across different models and ambiguity levels**
 
 ![Figure 8: Recall performance chart](/static/images/fig8.svg)
 
+Step-NL2VIS demonstrates superior recall performance across all ambiguity levels examined. At ambiguity level 3, it achieves 83.3% recall, representing a significant improvement over comparative approaches. The performance advantage of Step-NL2VIS over alternative approaches expands with increasing ambiguity levels.
 
-Step-nl2vis demonstrates superior recall performance across all ambiguity levels examined. At ambiguity level 3, it achieves 83.3% recall, representing a significant improvement over comparative approaches. The performance advantage of Step-nl2vis over alternative approaches expands with increasing ambiguity levels.
+## Data Usage
+
+see `./data/` dir
 
 ## Citation
 
@@ -132,10 +136,12 @@ If you find nvBench 2.0 useful for your work, please cite:
 @article{luo2024nvbench2,
   author    = {Luo, Tianqi and Huang, Chuhan and Shen, Leixian and Li, Boyan and Shen, Shuyu and Zeng, Wei and Tang, Nan and Luo, Yuyu},
   title     = {nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity},
-  <!-- journal   = {PVLDB}, -->
-  <!-- year      = {2024}, -->
 }
 ```
+
+<!-- journal   = {PVLDB}, -->
+
+<!-- year      = {2024}, -->
 
 <!-- ## License
 
