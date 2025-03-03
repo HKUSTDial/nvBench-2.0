@@ -12,7 +12,9 @@ see `./data/` dir
 
 ## Example of Reasoning through Ambiguity
 
-![Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query](/static/images/fig1.svg)
+<p align="center">
+  <img src="/static/images/fig1.svg" alt="Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query" width="60%">
+</p>
 
 As shown in Figure 1, a seemingly straightforward query like "Show the gross trend of comedy and action movies by year" contains multiple ambiguities:
 
@@ -42,7 +44,9 @@ We developed an ambiguity-injected NL2VIS data synthesizer that systematically i
 
 ## Controlled Ambiguity Injection Process
 
-![Figure 3: Injecting ambiguities into a seed visualization](/static/images/fig3.svg)
+<p align="center">
+  <img src="/static/images/fig3.svg" alt="Figure 3: Injecting ambiguities into a seed visualization" width="60%">
+</p>
 
 Figure 3 demonstrates how we inject ambiguities into a seed visualization:
 
