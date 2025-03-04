@@ -67,6 +67,12 @@
       font-weight: bold;
       margin-top: 0.5rem;
     }
+    .figure-description {
+      margin-top: 0.5rem;
+      text-align: justify;
+      font-style: italic;
+      font-size: 0.9rem;
+    }
     table {
       width: 100%;
       margin-bottom: 2rem;
@@ -192,7 +198,7 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/nvBench2/nvBench2.github.io"
+                <a href="https://github.com/HKUSTDial/nvBench2.github.io"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -252,6 +258,10 @@
             This structured approach enables systematic resolution of ambiguities while preserving multiple valid interpretations of the original query.
           </p>
         </div>
+        <p class="figure-caption">Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query</p>
+        <p class="figure-description">
+          As shown in Figure 1, a seemingly straightforward query like "Show the gross trend of comedy and action movies by year" contains multiple ambiguities: "gross" could refer to either World_Gross or Local_Gross columns, "Comedy and action" implicitly requires filtering by Genre, "trend" may suggest a bar chart or line chart, and "By year" implies temporal binning that isn't explicitly defined. The figure illustrates how these ambiguities can be resolved through step-wise reasoning to produce multiple valid visualizations.
+        </p>
       </div>
     </div>
 
@@ -267,6 +277,9 @@
         <div class="paper-figure">
           <img src="./static/images/fig2.svg" alt="An overview of ambiguity-injected NL2VIS data synthesizer">
           <p class="figure-caption">Figure 2: An overview of ambiguity-injected NL2VIS data synthesizer.</p>
+          <p class="figure-description">
+            We developed an ambiguity-injected NL2VIS data synthesizer that systematically introduces controlled ambiguity into visualization specifications. As shown in Figure 2, our pipeline consists of: (a) Ambiguity-aware VIS Tree Synthesis that begins with seed visualizations and injects ambiguity nodes to create ambiguity-aware visualization trees, (b) VIS Synthesis that uses an ASP solver to resolve these trees into multiple valid visualizations, (c) NL Synthesis that generates ambiguous natural language queries corresponding to the multiple valid visualizations, and (d) Reasoning Path Synthesis that produces step-wise reasoning paths documenting how ambiguities are resolved.
+          </p>
         </div>
       </div>
     </div>
@@ -287,6 +300,10 @@
             The process ensures traceability from query to visualization through explicit reasoning paths, enabling systematic evaluation of NL2VIS systems' ability to handle ambiguity.
           </p>
         </div>
+        <p class="figure-caption">Figure 3: Injecting ambiguities into a seed visualization</p>
+        <p class="figure-description">
+          Figure 3 demonstrates how we inject ambiguities into a seed visualization through a systematic process: (1) Starting with a seed chart (e.g., a bar chart showing gross by year), (2) Converting it to a seed visualization tree with explicit nodes, (3) Injecting ambiguity nodes (e.g., introducing a choice between Local_Gross and World_Gross), (4) Resolving the tree into multiple valid visualization specifications, and (5) Flattening the trees into concrete visualization queries.
+        </p>
       </div>
     </div>
 
@@ -300,6 +317,9 @@
     <div class="figure-container">
       <img src="./static/images/table1.png" alt="Comparison of NL2VIS benchmarks">
       <p class="figure-caption">Table 1: Comparison of NL2VIS benchmarks.</p>
+      <p class="figure-description">
+        nvBench 2.0 distinguishes itself from existing benchmarks by: supporting one-to-many mapping from NL queries to visualizations, explicitly modeling query ambiguity, providing reasoning paths to explain ambiguity resolution, and using LLM-based query generation for natural, diverse queries.
+      </p>
     </div>
     <!-- Benchmark Statistics -->
     <h2 class="title is-3">Benchmark Statistics</h2>
@@ -311,6 +331,9 @@
     <div class="figure-container">
       <img src="./static/images/table3.png" alt="Distribution of natural language styles across chart types and word count statistics" style="width: 60%;">
       <p class="figure-caption">Table 3: Distribution of natural language styles across chart types and word count statistics.</p>
+      <p class="figure-description">
+        The dataset includes diverse query styles (commands, questions, and captions) across various chart types. The average query length is approximately 14 words, with a good balance across all visualization types.
+      </p>
     </div>
 
     <div class="content">
@@ -323,11 +346,17 @@
       <div class="table-container">
         <img src="./static/images/table4.png" alt="Ambiguity count at each reasoning step">
         <p class="figure-caption">Table 4: Ambiguity count at each reasoning step.</p>
+        <p class="figure-description">
+          This table shows the distribution of ambiguities across different reasoning steps in the nvBench 2.0 dataset, highlighting which steps in the visualization process are most prone to ambiguity.
+        </p>
       </div>
       
       <div class="table-container">
         <img src="./static/images/table5.png" alt="Statistics of ambiguity patterns">
         <p class="figure-caption">Table 5: Statistics of ambiguity patterns.</p>
+        <p class="figure-description">
+          Our dataset contains diverse ambiguity patterns, with Channel Encoding (CE) being the most common type of ambiguity (88.06%), followed by Data Transformation (DT) ambiguities (46.00%). Many samples contain multiple types of ambiguity, highlighting the complexity of real-world visualization requests.
+        </p>
       </div>
     </div>
 
@@ -373,16 +402,25 @@
     <div class="figure-container">
       <img src="./static/images/table6.png" alt="Overall performance comparison between different models on nvBench 2.0">
       <p class="figure-caption">Table 6: Overall performance comparison between different models on nvBench 2.0.</p>
+      <p class="figure-description">
+        Our proposed Step-NL2VIS achieves state-of-the-art performance across most metrics, significantly outperforming both prompting-based and fine-tuning-based baselines. Step-NL2VIS obtains the highest F1@3 (81.50%) and F1@5 (80.88%), demonstrating its superior ability to handle ambiguity in NL2VIS tasks.
+      </p>
     </div>
     
     <div class="figure-container">
       <img src="./static/images/fig7.svg" alt="F1 across different models and ambiguity levels">
       <p class="figure-caption">Figure 7: F1 across different models and ambiguity levels.</p>
+      <p class="figure-description">
+        The heatmap shows that Step-NL2VIS consistently outperforms other models across most chart types and ambiguity levels. Models incorporating step-wise reasoning generally show better performance than their direct prompting counterparts, confirming the effectiveness of decomposing complex visualization reasoning into explicit steps.
+      </p>
     </div>
     
     <div class="figure-container">
       <img src="./static/images/fig8.svg" alt="Recall across different models and ambiguity levels">
       <p class="figure-caption">Figure 8: Recall across different models and ambiguity levels.</p>
+      <p class="figure-description">
+        Step-NL2VIS demonstrates superior recall performance across all ambiguity levels examined. At ambiguity level 3, it achieves 83.3% recall, representing a significant improvement over comparative approaches. The performance advantage of Step-NL2VIS over alternative approaches expands with increasing ambiguity levels.
+      </p>
     </div>
 
     <!-- Citation Section -->
