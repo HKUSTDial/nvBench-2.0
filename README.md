@@ -143,9 +143,14 @@ see `./data/` dir
 If you find nvBench 2.0 useful for your work, please cite:
 
 ```
-@article{luo2024nvbench2,
-  author    = {Luo, Tianqi and Huang, Chuhan and Shen, Leixian and Li, Boyan and Shen, Shuyu and Zeng, Wei and Tang, Nan and Luo, Yuyu},
-  title     = {nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity},
+@misc{luo2025nvbench20benchmarknatural,
+      title={nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity}, 
+      author={Tianqi Luo and Chuhan Huang and Leixian Shen and Boyan Li and Shuyu Shen and Wei Zeng and Nan Tang and Yuyu Luo},
+      year={2025},
+      eprint={2503.12880},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2503.12880}, 
 }
 ```
 
