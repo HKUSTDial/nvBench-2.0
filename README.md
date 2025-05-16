@@ -2,6 +2,8 @@
 
 This repository contains the source code and data for the nvBench 2.0 benchmark, designed to evaluate Natural Language to Visualization (NL2VIS) systems in scenarios involving ambiguous queries.
 
+## Update Hugging Face Data Hosting :hugs: : [TianqiLuo/nvBench2.0](https://huggingface.co/datasets/TianqiLuo/nvBench2.0)
+
 ## Introduction
 
 Natural Language to Visualization (NL2VIS) enables users to create visualizations from natural language queries, making data insights more accessible. However, NL2VIS faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
