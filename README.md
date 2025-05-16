@@ -8,7 +8,10 @@ Natural Language to Visualization (NL2VIS) enables users to create visualization
 
 ## Data Usage
 
-see `./data/` dir
+also see `./data/` dir
+
+- Also in Hugging Face: 
+[TianqiLuo/nvBench2.0](https://huggingface.co/datasets/TianqiLuo/nvBench2.0)
 
 ## Example of Reasoning through Ambiguity
 
