@@ -15,6 +15,47 @@ see `./data/` dir
 - Also in Hugging Face :hugs: 
 [TianqiLuo/nvBench2.0](https://huggingface.co/datasets/TianqiLuo/nvBench2.0)
 
+
+## Code Structure
+
+The `./code/` directory contains the implementation of our benchmark and evaluation tools:
+
+### Data Generation
+
+The data synthesis pipeline is organized into four main parts:
+
+1. **Metadata Processing** (`part1_metadata/`)
+   - Database reading and CSV export
+   - Column description and ambiguity analysis
+   - Table filtering and metadata generation
+
+2. **Visualization Synthesis** (`part2_vis_synthesize/`)
+   - Answer Set Programming (ASP) based visualization generation
+   - Random and multiprocess visualization tree selection
+
+3. **Query Synthesis** (`part3_query_synthesize/`)
+   - Natural language query generation
+   - Step-by-step and multiprocess query generation
+
+4. **Reasoning Path Generation** (`part4_reasoning_path/`)
+   - Step-by-step reasoning path generation
+
+Each part of the pipeline builds upon the previous one, creating a complete data synthesis workflow from raw database to natural language queries with visualization specifications and reasoning paths.
+
+### Model Fine-tuning
+- `model_finetune/`: Code for fine-tuning LLMs on the nvBench 2.0 dataset
+  - `sft/`: Supervised Fine-Tuning implementation
+  - `step_dpo/`: Step-wise Direct Preference Optimization implementation
+
+### Prompting-based Experiments
+- `prompt_experiment/`: Experiments with different prompting strategies for basic and stepwise methods
+
+### Evaluation
+- `evaluation/`: Tools for evaluating NL2VIS systems on the benchmark
+
+To use the code, please refer to the README files in each subdirectory for specific instructions.
+
+
 ## Example of Reasoning through Ambiguity
 
 <p align="center">
