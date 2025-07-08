@@ -59,7 +59,7 @@ To use the code, please refer to the README files in each subdirectory for speci
 ## Example of Reasoning through Ambiguity
 
 <p align="center">
-  <img src="/static/images/fig1.svg" alt="Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query" width="60%">
+  <img src="/static/images/fig1.svg" alt="Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query" width="100%">
 </p>
 
 As shown in Figure 1, a seemingly straightforward query like "Show the gross trend of comedy and action movies by year" contains multiple ambiguities:
