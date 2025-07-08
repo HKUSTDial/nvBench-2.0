@@ -249,9 +249,8 @@
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Step-wise Disambiguation (Figure 1) -->
-    <div class="figure-vertical">
-      <img src="./static/images/fig1.svg" alt="Example of reasoning appropriate visualizations from an ambiguous natural language query">
-      <div class="figure-text">
+    <div class="columns is-centered">
+      <div class="column">
         <h2 class="title is-3">Step-wise Disambiguation</h2>
         <div class="content">
           <p>
@@ -268,10 +267,13 @@
             This structured approach enables systematic resolution of ambiguities while preserving multiple valid interpretations of the original query.
           </p>
         </div>
-        <p class="figure-caption">Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query</p>
-        <p class="figure-description">
-          As shown in Figure 1, a seemingly straightforward query like "Show the gross trend of comedy and action movies by year" contains multiple ambiguities: "gross" could refer to either World_Gross or Local_Gross columns, "Comedy and action" implicitly requires filtering by Genre, "trend" may suggest a bar chart or line chart, and "By year" implies temporal binning that isn't explicitly defined. The figure illustrates how these ambiguities can be resolved through step-wise reasoning to produce multiple valid visualizations.
-        </p>
+        <div class="paper-figure">
+          <img src="./static/images/fig1.svg" alt="Example of reasoning appropriate visualizations from an ambiguous natural language query">
+          <p class="figure-caption">Figure 1: Example of reasoning appropriate visualizations from an ambiguous natural language query</p>
+          <p class="figure-description">
+            As shown in Figure 1, a seemingly straightforward query like "Show the gross trend of comedy and action movies by year" contains multiple ambiguities: "gross" could refer to either World_Gross or Local_Gross columns, "Comedy and action" implicitly requires filtering by Genre, "trend" may suggest a bar chart or line chart, and "By year" implies temporal binning that isn't explicitly defined. The figure illustrates how these ambiguities can be resolved through step-wise reasoning to produce multiple valid visualizations.
+          </p>
+        </div>
       </div>
     </div>
 
