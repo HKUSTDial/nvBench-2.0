@@ -1,4 +1,4 @@
-# nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity
+# nvBench 2.0
 
 - 🔥 [NeurIPS'25] nvBench 2.0: Resolving Ambiguity in Text-to-Visualization through Stepwise Reasoning
 - 🔥 Data Repo in Hugging Face :hugs: : [nvBench2.0](https://huggingface.co/datasets/TianqiLuo/nvBench2.0)
