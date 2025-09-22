@@ -144,7 +144,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity</h1>
+          <h1 class="title is-1 publication-title">nvBench 2.0: Resolving Ambiguity in Text-to-Visualization through Stepwise Reasoning</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="#">Tianqi Luo</a><sup>1</sup>,</span>
@@ -232,13 +232,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Natural Language to Visualization (NL2VIS) enables users to create visualizations from natural language queries, making data insights more accessible. However, NL2VIS faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
+            Text-to-Visualization (Text2VIS) enables users to create visualizations from natural language queries, making data insights more accessible. However, Text2VIS faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
           </p>
           <p>
-            To address this challenge, we introduce nvBench 2.0, a new benchmark designed to evaluate NL2VIS systems in scenarios involving ambiguous queries. nvBench 2.0 includes 7,878 natural language queries and 24,076 corresponding visualizations, derived from 780 tables across 153 domains. It is built using a controlled ambiguity-injection pipeline that generates ambiguous queries through a reverse-generation workflow. By starting with unambiguous seed visualizations and selectively injecting ambiguities, the pipeline yields multiple valid interpretations for each query, with each ambiguous query traceable to its corresponding visualization through step-wise reasoning paths.
+            To address this challenge, we introduce nBench 2.0, a new benchmark designed to evaluate Text2VIS systems in scenarios involving ambiguous queries. nvBench 2.0 includes 7,878 natural language queries and 24,076 corresponding visualizations, derived from 780 tables across 153 domains. It is built using a controlled ambiguity-injection pipeline that generates ambiguous queries through a reverse-generation workflow. By starting with unambiguous seed visualizations and selectively injecting ambiguities, the pipeline yields multiple valid interpretations for each query, with each ambiguous query traceable to its corresponding visualization through step-wise reasoning paths.
           </p>
           <p>
-            We evaluate various Large Language Models (LLMs) on their ability to perform ambiguous NL2VIS tasks using nvBench 2.0. We also propose Step-NL2VIS, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization. Our results show that Step-NL2VIS outperforms all baselines, setting a new state-of-the-art for ambiguous NL2VIS tasks.
+            We evaluate various Large Language Models (LLMs) on their ability to perform ambiguous Text2VIS tasks using nBench 2.0. We also propose Step-Text2Vis, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization. Our results show that Step-Text2Vis outperforms all baselines, setting a new state-of-the-art for ambiguous Text2VIS tasks. 
           </p>
         </div>
       </div>
