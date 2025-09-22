@@ -1,5 +1,5 @@
 # nvBench 2.0
-
+#### NEWS
 - 🔥 [NeurIPS'25] nvBench 2.0: Resolving Ambiguity in Text-to-Visualization through Stepwise Reasoning
 - 🔥 Data Repo in Hugging Face :hugs: : [nvBench2.0](https://huggingface.co/datasets/TianqiLuo/nvBench2.0)
 
