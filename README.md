@@ -1,12 +1,16 @@
 # nvBench 2.0: A Benchmark for Natural Language to Visualization under Ambiguity
 
-This repository contains the source code and data for the nvBench 2.0 benchmark, designed to evaluate Natural Language to Visualization (NL2VIS) systems in scenarios involving ambiguous queries.
-
-## Update Data Repo in Hugging Face :hugs: : [nvBench2.0](https://huggingface.co/datasets/TianqiLuo/nvBench2.0)
+- 🔥 [NeurIPS'25] nvBench 2.0: Resolving Ambiguity in Text-to-Visualization through Stepwise Reasoning
+- 🔥 Data Repo in Hugging Face :hugs: : [nvBench2.0](https://huggingface.co/datasets/TianqiLuo/nvBench2.0)
 
 ## Introduction
 
-Natural Language to Visualization (NL2VIS) enables users to create visualizations from natural language queries, making data insights more accessible. However, NL2VIS faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
+Text-to-Visualization (Text2VIS) enables users to create visualizations from natural language queries, making data insights more accessible. However, Text2VIS faces challenges in interpreting ambiguous queries, as users often express their visualization needs in imprecise language.
+
+To address this challenge, we introduce nBench 2.0, a new benchmark designed to evaluate Text2VIS systems in scenarios involving ambiguous queries. nvBench 2.0 includes 7,878 natural language queries and 24,076 corresponding visualizations, derived from 780 tables across 153 domains. It is built using a controlled ambiguity-injection pipeline that generates ambiguous queries through a reverse-generation workflow. By starting with unambiguous seed visualizations and selectively injecting ambiguities, the pipeline yields multiple valid interpretations for each query, with each ambiguous query traceable to its corresponding visualization through step-wise reasoning paths.
+
+We evaluate various Large Language Models (LLMs) on their ability to perform ambiguous Text2VIS tasks using nBench 2.0. We also propose Step-Text2Vis, an LLM-based model trained on nvBench 2.0, which enhances performance in ambiguous scenarios through step-wise preference optimization. Our results show that Step-Text2Vis outperforms all baselines, setting a new state-of-the-art for ambiguous Text2VIS tasks. Our source code and data are available at https://nvbench2.github.io/
+
 
 ## Data Usage
 
