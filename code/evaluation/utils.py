@@ -1,0 +1,245 @@
+from typing import List, Dict, Any
+import json
+import pandas as pd
+
+
+def deep_compare_charts(chart1: Dict[str, Any], chart2: Dict[str, Any]) -> bool:
+    """
+    深度比较两个图表JSON对象是否相等，忽略键的顺序
+    """
+    # 如果两个输入都是字典类型
+    if isinstance(chart1, dict) and isinstance(chart2, dict):
+        # 首先比较字典长度是否相等
+        if len(chart1) != len(chart2):
+            return False
+        # 检查chart1中的每个键值对是否都在chart2中存在且值相等
+        return all(
+            k in chart2 and deep_compare_charts(v, chart2[k])
+            for k, v in chart1.items()
+        )
+    
+    # 如果两个输入都是列表类型
+    elif isinstance(chart1, list) and isinstance(chart2, list):
+        # 首先比较列表长度是否相等
+        if len(chart1) != len(chart2):
+            return False
+        # 检查chart1中的每个元素是否都能在chart2中找到匹配项
+        return all(
+            any(deep_compare_charts(x, y) for y in chart2)
+            for x in chart1
+        )
+    
+    # 如果是基本类型（字符串、数字等），直接比较值
+    else:
+        return chart1 == chart2
+
+def load_data(data_file):
+    """加载数据文件"""
+    with open(data_file, 'r') as f:
+        return json.load(f)
+
+def reverse_axes_if_needed(chart, metadata):
+    """根据字段类型判断是否需要反转 x 轴和 y 轴"""
+    global reverse_count  # 声明使用全局变量
+    
+    # 检查是否同时存在x轴和y轴编码
+    if not (chart.get('encoding', {}).get('x') and chart.get('encoding', {}).get('y')):
+        return chart
+    
+    # 检查x和y编码是否为字典类型
+    if not isinstance(chart['encoding']['x'], dict) or not isinstance(chart['encoding']['y'], dict):
+        return chart
+        
+    x_field = chart['encoding']['x'].get('field')
+    y_field = chart['encoding']['y'].get('field')
+    
+    # 检查字段是否存在
+    if not (x_field and y_field):
+        return chart
+
+    # 如果字段是列表类型，取第一个元素
+    if isinstance(x_field, list):
+        x_field = x_field[0]
+    if isinstance(y_field, list):
+        y_field = y_field[0]
+
+    # 确保字段是字符串类型
+    if not isinstance(x_field, str) or not isinstance(y_field, str):
+        return chart
+
+    # 获取字段类型
+    x_type = metadata.get('type_by_field', {}).get(x_field, None)
+    y_type = metadata.get('type_by_field', {}).get(y_field, None)
+    
+    # 如果 x 轴和 y 轴都是定量类型
+    if x_type == 'quantitative' and y_type == 'quantitative' and x_field > y_field:
+        # 交换 x 和 y
+        chart['encoding']['x'], chart['encoding']['y'] = chart['encoding']['y'], chart['encoding']['x']
+        return chart
+
+    # 对于 mark 为 bar line boxplot 的情况
+    if chart.get('mark') in ['bar', 'line', 'boxplot'] and x_type == 'quantitative' and y_type != 'quantitative':
+        # 交换 x 和 y
+        chart['encoding']['x'], chart['encoding']['y'] = chart['encoding']['y'], chart['encoding']['x']
+        return chart
+
+    return chart
+
+def normalize_chart_order(chart):
+    """规范化Vega-Lite图表对象的顺序"""
+    # 定义新的有序字典来存储规范化后的图表
+    normalized = {}
+    
+    # 1. mark
+    if 'mark' in chart:
+        normalized['mark'] = chart['mark']
+    
+    # 2. encoding
+    if 'encoding' in chart:
+        normalized['encoding'] = {}
+        # 按照指定顺序处理encoding中的channel
+        channel_order = ['x', 'y', 'theta', 'color', 'size']
+        for channel in channel_order:
+            if channel in chart['encoding']:
+                normalized['encoding'][channel] = {}
+                # 按照指定顺序处理channel中的属性
+                property_order = ['field', 'aggregate', 'bin', 'sort']
+                for prop in property_order:
+                    if prop in chart['encoding'][channel]:
+                        normalized['encoding'][channel][prop] = chart['encoding'][channel][prop]
+                
+                # 添加其他未在顺序中指定的属性
+                if isinstance(chart['encoding'][channel], dict):
+                    for key in chart['encoding'][channel]:
+                        if key not in property_order:
+                            normalized['encoding'][channel][key] = chart['encoding'][channel][key]
+                else:
+                    # 如果不是字典，记录错误
+                    #print(f"警告: encoding['{channel}'] 不是字典类型，值为: {chart['encoding'][channel]}")
+                    continue
+
+        # 添加其他未指定的channel
+        for key in chart['encoding']:
+            if key not in channel_order:
+                # 检查值是否为字典类型，如果不是则跳过或处理
+                if isinstance(chart['encoding'][key], dict):
+                    normalized['encoding'][key] = chart['encoding'][key]
+                else:
+                    # 如果不是字典，记录错误并跳过
+                    #print(f"警告: encoding['{key}'] 不是字典类型，值为: {chart['encoding'][key]}")
+                    continue
+    
+    # 3. transformation
+    if 'transform' in chart:
+        normalized['transform'] = []
+        for transform in chart['transform']:
+            if 'filter' in transform and isinstance(transform['filter'], dict):  # 确保filter是字典
+                normalized_filter = {}
+                # 按照指定顺序处理filter中的操作符
+                operator_order = ['equal', 'lt', 'lte', 'gt', 'gte', 'range', 'oneOf', 'valid']
+                for op in operator_order:
+                    if op in transform['filter']:
+                        normalized_filter[op] = transform['filter'][op]
+                
+                # 添加其他未在顺序中指定的操作符
+                for key in transform['filter']:
+                    if key not in operator_order:
+                        normalized_filter[key] = transform['filter'][key]
+                
+                normalized['transform'].append({'filter': normalized_filter})
+    
+    # 添加其他未在顺序中指定的顶层属性
+    for key in chart:
+        if key not in ['mark', 'encoding', 'transform']:
+            normalized[key] = chart[key]
+    
+    return normalized
+
+def remove_empty_transform(chart_list):
+    """删除图表中值为空的键值对"""
+    # 处理列表中的每个图表
+    cleaned_charts = []
+    for chart in chart_list:
+        # 如果transform字段是空列表，则删除该键值对
+        if 'transform' in chart and isinstance(chart['transform'], list) and not chart['transform']:
+            del chart['transform']  # 删除transform键值对
+        cleaned_charts.append(chart)  # 添加处理后的图表
+    
+    return cleaned_charts
+
+def remove_duplicates(chart_list):
+    """移除重复的图表，并统计重复次数"""
+    global duplicate_count
+    unique_charts = {}
+    
+    # 使用字典去重，键为图表的JSON字符串
+    for chart in chart_list:
+        chart_str = json.dumps(chart, sort_keys=True)
+        if chart_str not in unique_charts:
+            unique_charts[chart_str] = chart
+        else:
+            duplicate_count += 1
+    
+    return list(unique_charts.values())
+
+def test_remove_empty_values():
+    """测试remove_empty_values函数的示例"""
+    # 测试数据
+    test_charts = [{
+        "mark": "point",
+        "encoding": {
+            "x": {
+                "field": "invoice_number",
+                "type": "",  # 空值
+                "scale": {}  # 空字典
+            },
+            "y": {
+                "field": "order_id",
+                "aggregate": None,  # None值
+                "bin": []  # 空列表
+            }
+        },
+        "transform": []  # 空列表
+    }]
+    
+    # 调用函数
+    cleaned_charts = remove_empty_values(test_charts)
+    
+    # 打印结果
+    print("\n测试 remove_empty_values 函数:")
+    print("原始图表:", json.dumps(test_charts, indent=2, ensure_ascii=False))
+    print("清理后的图表:", json.dumps(cleaned_charts, indent=2, ensure_ascii=False))
+
+# def main():
+#     # 加载数据和元数据
+#     nvbench_data = load_data(nvBench2_file)
+#     metadata_data = load_data(metadata_file)
+    
+#     # 遍历每个对象
+#     for obj in nvbench_data:
+#         csv_file = obj.get('csv_file')
+#         metadata = metadata_data.get(csv_file, {})
+#         chart_list = obj.get('output', [])
+
+#         new_chart_list = []
+#         for chart in chart_list:
+#             # 1. 反转 x 轴和 y 轴
+#             updated_chart = reverse_axes_if_needed(chart, metadata)
+#             # 2. 规范化图表对象顺序
+#             normalized_chart = normalize_chart_order(updated_chart)
+#             new_chart_list.append(normalized_chart)
+        
+#         # 3. 删除空值的键值对
+#         cleaned_chart_list = remove_empty_values(new_chart_list)
+#         # 4. 去除重复图表
+#         unique_chart_list = remove_duplicates(cleaned_chart_list)
+#         # print(chart_list)
+#         # print(new_chart_list)
+#         #obj['output'] = unique_chart_list
+
+#     print(f"\nTotal reversed charts: {reverse_count}")
+#     print(f"Total duplicate charts: {duplicate_count}")
+
+# if __name__ == "__main__":
+#     main()
+#     #test_remove_empty_values()
